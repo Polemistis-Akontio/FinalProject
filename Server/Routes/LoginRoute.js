@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const authenticateToken = require('../Middleware/authenticationToken');
+const { login } = require('../Controllers/LoginController');
+const { createAccount } = require('../Controllers/LoginController');
 
 // Define your routes
-router.get('/api/login', (req, res) => {
-    res.send('Welcome to the Server!');
-});
+router.get('/login', login);
+router.post('/create', createAccount);
 
-const app = express();
-app.use('/', router);
-
-module.exports = app;
+module.exports = router;
